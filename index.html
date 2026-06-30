@@ -341,7 +341,52 @@
           </tbody>
         </table>
       </div>
-      <div class="footnote">Every widget above is computed from sheet fields: status dropdown, Yes/No installed-base, month/year service &amp; spare dates, 1–5 survey ratings, OEM rating/qty/timeline, and the Utility tender section.</div>
+      <!-- ENGINEER LEADERBOARD + REGION SPLIT -->
+      <div class="grid2">
+        <div class="panel">
+          <div class="ph"><h3>Field engineer leaderboard</h3><span class="meta">visits &amp; conversion by who logged them</span></div>
+          <table>
+            <thead><tr><th>Engineer</th><th>Visits</th><th>Open</th><th>Won</th><th>Win rate</th></tr></thead>
+            <tbody>
+              <tr><td><div class="who"><div class="a">AK</div>A. Kumar</div></td><td>3</td><td>2</td><td>1</td><td><b style="color:var(--ok)">100%</b></td></tr>
+              <tr><td><div class="who"><div class="a">RS</div>R. Senthil</div></td><td>4</td><td>2</td><td>1</td><td><b>50%</b></td></tr>
+            </tbody>
+          </table>
+          <div class="footnote" style="padding:0 18px 14px">Win rate = Closed Won / (Won + Lost) from the visit status field.</div>
+        </div>
+        <div class="panel">
+          <div class="ph"><h3>Activity by region</h3><span class="meta">from the location / address field</span></div>
+          <div class="pb">
+            <div class="hbar"><div class="hl">Tamil Nadu</div><div class="ht"><div class="hf" style="width:86%;background:var(--crm)">6</div></div><div class="hv">86%</div></div>
+            <div class="hbar"><div class="hl">Rajasthan</div><div class="ht"><div class="hf" style="width:14%;background:var(--crm)">1</div></div><div class="hv">14%</div></div>
+            <div class="footnote">Every sheet captures location, so visits, opportunities and tender value can all be sliced by region.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- L1-OEM CONCENTRATION + LOST REASONS -->
+      <div class="grid2">
+        <div class="panel">
+          <div class="ph"><h3>L1-OEM concentration</h3><span class="meta">who keeps winning tenders — your spec-in targets</span></div>
+          <div class="pb">
+            <div class="hbar"><div class="hl" style="color:var(--seg-oem)">Voltamp</div><div class="ht"><div class="hf" style="width:50%;background:var(--seg-oem)">2 wins</div></div><div class="hv">₹83 Cr</div></div>
+            <div class="hbar"><div class="hl" style="color:var(--seg-oem)">TBEA</div><div class="ht"><div class="hf" style="width:25%;background:var(--seg-oem)">1 win</div></div><div class="hv">₹148 Cr</div></div>
+            <div class="hbar"><div class="hl" style="color:var(--seg-oem)">BHEL</div><div class="ht"><div class="hf" style="width:25%;background:var(--seg-oem)">1 win</div></div><div class="hv">₹62 Cr</div></div>
+            <div class="footnote">Counted from the L1 column across tracked tenders. Voltamp wins most often — prioritise spec-in there.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="ph"><h3>Why we lost</h3><span class="meta">reasons logged on Closed Lost</span></div>
+          <div class="pb">
+            <div class="hbar"><div class="hl">Price / commercial</div><div class="ht"><div class="hf" style="width:50%;background:var(--bad)">2</div></div><div class="hv">50%</div></div>
+            <div class="hbar"><div class="hl">Competitor incumbent</div><div class="ht"><div class="hf" style="width:25%;background:var(--bad)">1</div></div><div class="hv">25%</div></div>
+            <div class="hbar"><div class="hl">Spec mismatch</div><div class="ht"><div class="hf" style="width:25%;background:var(--bad)">1</div></div><div class="hv">25%</div></div>
+            <div class="flag" style="margin-top:6px"><span class="fi">＋</span><div>Needs one new field: a <b>lost reason</b> prompt when a visit is set to <b>Closed Lost</b>. Not on the sheets — small addition to the status flow.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footnote">Every widget above is computed from sheet fields: status dropdown, Yes/No installed-base, month/year service &amp; spare dates, 1–5 survey ratings, OEM rating/qty/timeline, the Utility tender section, plus location and logged-by. The only field not on the sheets is the lost-reason prompt, flagged above.</div>
     </section>
 
     <!-- ===== VISITS ===== -->
