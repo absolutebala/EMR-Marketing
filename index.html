@@ -190,6 +190,7 @@
     <div class="nav" onclick="go('visits',this)"><span class="i">📍</span>Visits<span class="badge">9</span></div>
     <div class="nav" onclick="go('customers',this)"><span class="i">🏢</span>Customers<span class="badge">12</span></div>
     <div class="grp">Pipeline</div>
+    <div class="nav" onclick="go('leads',this)"><span class="i">◎</span>Leads<span class="badge">7</span></div>
     <div class="nav" onclick="go('tenders',this)"><span class="i">⚖</span>Tenders<span class="badge">4</span></div>
     <div class="nav" onclick="go('rules',this)"><span class="i">✦</span>Recommendations</div>
     <div style="margin-top:18px;padding:11px;background:#f6f8fa;border-radius:9px;font-size:11px;color:var(--muted);line-height:1.5">
@@ -419,6 +420,47 @@
         </table>
       </div>
       <div class="footnote">Click a customer name to open the full visit record. The status dropdown feeds the win-rate and status stats on the dashboard.</div>
+    </section>
+
+    <!-- ===== LEADS ===== -->
+    <section id="v-leads" class="hide">
+      <div class="pagehead">
+        <div>
+          <div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Leads</div>
+          <h1 class="h1">Leads</h1>
+          <div class="sub">Auto-created from field visits — each lead carries the product being pursued and traces back to its visit</div>
+        </div>
+        <button class="btn">Export</button>
+      </div>
+
+      <div class="cards k4">
+        <div class="card"><div class="lbl"><span class="tick" style="background:var(--warn)"></span>Open leads</div><div class="val">4</div><div class="delta">status = Opportunity</div></div>
+        <div class="card"><div class="lbl"><span class="tick" style="background:var(--ok)"></span>Won</div><div class="val">2</div><div class="delta">converted</div></div>
+        <div class="card"><div class="lbl"><span class="tick" style="background:var(--bad)"></span>Lost</div><div class="val">1</div><div class="delta">reason logged</div></div>
+        <div class="card"><div class="lbl"><span class="tick" style="background:var(--crm)"></span>Open pipeline value</div><div class="val">₹2.14 Cr</div><div class="delta">sum of open leads</div></div>
+      </div>
+
+      <div class="filters">
+        <span class="chipf on">All</span><span class="chipf">End User</span><span class="chipf">OEM</span><span class="chipf">Utility</span>
+        <span style="flex:1"></span>
+        <span class="chipf">Opportunity</span><span class="chipf">Closed Won</span><span class="chipf">Closed Lost</span>
+      </div>
+
+      <div class="panel">
+        <table>
+          <thead><tr><th>Lead</th><th>Segment</th><th>Product pursued</th><th>From visit</th><th>Owner</th><th>Value</th><th>Follow-up</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr class="row"><td onclick="open_('util')"><b>TN Transmission Corp</b><br><span class="mini">tender pull-through</span></td><td><span class="seg util"><span class="d"></span>Utility</span></td><td>OLTC Monitoring</td><td>26 Jun</td><td><div class="who"><div class="a">RS</div></div></td><td><b>₹96.0 L</b></td><td>28 Jun</td><td><select class="status opp" onchange="setStatus(this)"><option value="opp" selected>Opportunity</option><option value="won">Closed Won</option><option value="lost">Closed Lost</option></select></td></tr>
+            <tr class="row"><td onclick="open_('oem')"><b>BHEL — Trichy</b><br><span class="mini">export build spec-in</span></td><td><span class="seg oem"><span class="d"></span>OEM</span></td><td>OFU + NIFPS</td><td>23 Jun</td><td><div class="who"><div class="a">AK</div></div></td><td><b>₹64.0 L</b></td><td>30 Jun</td><td><select class="status opp" onchange="setStatus(this)"><option value="opp" selected>Opportunity</option><option value="won">Closed Won</option><option value="lost">Closed Lost</option></select></td></tr>
+            <tr class="row"><td onclick="open_('oem')"><b>Voltamp Transformers</b><br><span class="mini">spec-in for new builds</span></td><td><span class="seg oem"><span class="d"></span>OEM</span></td><td>Smart Breather</td><td>26 Jun</td><td><div class="who"><div class="a">AK</div></div></td><td><b>₹42.0 L</b></td><td>02 Jul</td><td><select class="status opp" onchange="setStatus(this)"><option value="opp" selected>Opportunity</option><option value="won">Closed Won</option><option value="lost">Closed Lost</option></select></td></tr>
+            <tr class="row"><td onclick="open_('end')"><b>Chettinad Cement — Karur</b><br><span class="mini">high tap-frequency site</span></td><td><span class="seg end"><span class="d"></span>End User</span></td><td>Tap Changer Monitoring</td><td>26 Jun</td><td><div class="who"><div class="a">RS</div></div></td><td><b>₹12.0 L</b></td><td>03 Jul</td><td><select class="status opp" onchange="setStatus(this)"><option value="opp" selected>Opportunity</option><option value="won">Closed Won</option><option value="lost">Closed Lost</option></select></td></tr>
+            <tr class="row"><td onclick="open_('end')"><b>JSW Steel — Salem</b><br><span class="mini">AMC + breather upgrade</span></td><td><span class="seg end"><span class="d"></span>End User</span></td><td>Smart Breather</td><td>25 Jun</td><td><div class="who"><div class="a">AK</div></div></td><td><b>₹18.4 L</b></td><td>—</td><td><select class="status won" onchange="setStatus(this)"><option value="opp">Opportunity</option><option value="won" selected>Closed Won</option><option value="lost">Closed Lost</option></select></td></tr>
+            <tr class="row"><td onclick="open_('end')"><b>Hindustan Zinc — Debari</b><br><span class="mini">OFU addition</span></td><td><span class="seg end"><span class="d"></span>End User</span></td><td>OFU</td><td>24 Jun</td><td><div class="who"><div class="a">RS</div></div></td><td><b>₹22.0 L</b></td><td>—</td><td><select class="status won" onchange="setStatus(this)"><option value="opp">Opportunity</option><option value="won" selected>Closed Won</option><option value="lost">Closed Lost</option></select></td></tr>
+            <tr class="row"><td onclick="open_('util')"><b>TANGEDCO</b><br><span class="mini">feeder upgrade tender</span></td><td><span class="seg util"><span class="d"></span>Utility</span></td><td>Smart Breather</td><td>22 Jun</td><td><div class="who"><div class="a">RS</div></div></td><td><b>₹62.0 L</b></td><td>—</td><td><select class="status lost" onchange="setStatus(this)"><option value="opp">Opportunity</option><option value="won">Closed Won</option><option value="lost" selected>Closed Lost</option></select></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="footnote">A lead is generated whenever a visit identifies a product to pursue — for End Users the recommendation engine fills the product, for OEMs the spec-in, for Utilities the tender pull-through. Status here and on the visit stay in sync.</div>
     </section>
 
     <!-- ===== END USER VISIT DETAIL ===== -->
