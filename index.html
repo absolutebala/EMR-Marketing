@@ -60,10 +60,13 @@
   .btn.primary:hover{background:#0b8076}
 
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+  .cards.k5{grid-template-columns:repeat(5,1fr)}
+  .cards.k4{grid-template-columns:repeat(4,1fr)}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:15px 16px;box-shadow:var(--shadow)}
   .card .lbl{font-size:12px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:7px}
-  .card .val{font-size:26px;font-weight:700;margin-top:7px;letter-spacing:-.5px}
+  .card .val{font-size:25px;font-weight:700;margin-top:7px;letter-spacing:-.5px}
   .card .delta{font-size:11.5px;font-weight:500;margin-top:3px;color:var(--muted)}
+  .up{color:var(--ok)} .down{color:var(--bad)}
   .tick{width:8px;height:8px;border-radius:2px;display:inline-block}
 
   .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:18px}
@@ -72,6 +75,7 @@
   .panel .ph .meta{font-size:12px;color:var(--muted)}
   .panel .pb{padding:18px}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid2.uneven{grid-template-columns:1.3fr 1fr}
 
   table{width:100%;border-collapse:collapse;font-size:13px}
   th{text-align:left;font-size:11px;letter-spacing:.4px;text-transform:uppercase;color:var(--faint);font-weight:700;padding:10px 18px;border-bottom:1px solid var(--border-2);background:#fafbfc}
@@ -84,6 +88,12 @@
   .who{display:flex;align-items:center;gap:9px}
   .who .a{width:28px;height:28px;border-radius:50%;background:#e7f6f4;color:#0a6e64;font-weight:700;font-size:11px;display:grid;place-items:center}
 
+  /* status dropdown */
+  .status{font-family:inherit;font-size:12px;font-weight:600;padding:5px 9px;border-radius:20px;border:1px solid var(--border);cursor:pointer;-webkit-appearance:none;appearance:none;background-position:right 8px center;background-repeat:no-repeat;padding-right:24px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M2 3l3 3 3-3' stroke='%2369748a' fill='none' stroke-width='1.5'/></svg>")}
+  .status.opp{background-color:#fff7ec;color:#b45309;border-color:#fed7aa}
+  .status.won{background-color:#ecfdf5;color:#047857;border-color:#6ee7b7}
+  .status.lost{background-color:#fef2f2;color:#b91c1c;border-color:#fca5a5}
+
   /* record detail field grid */
   .rec{display:grid;grid-template-columns:1fr 1fr;gap:0}
   .rec .f{padding:13px 18px;border-bottom:1px solid var(--border-2)}
@@ -95,28 +105,57 @@
   .yn.y{background:#ecfdf5;color:#047857} .yn.n{background:#fef2f2;color:#b91c1c}
   .chip{display:inline-block;background:#f1f3f6;border-radius:6px;padding:3px 9px;font-size:12px;font-weight:600;color:#41506a;margin:2px 4px 2px 0}
   .attach{display:inline-flex;align-items:center;gap:7px;background:#eff5ff;color:var(--seg-end);border-radius:8px;padding:6px 11px;font-size:12.5px;font-weight:600}
-
   .sectionhdr{background:#fafbfc;border-bottom:1px solid var(--border-2);padding:10px 18px;font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:#41506a;font-weight:700}
 
-  /* ratings 1-5 */
+  /* ratings */
   .ratetab{width:100%;border-collapse:collapse}
   .ratetab td{padding:11px 18px;border-bottom:1px solid var(--border-2)}
   .ratetab .rl{font-size:13px;color:#2b3850}
   .dots{display:flex;gap:5px;justify-content:flex-end}
   .dots i{width:15px;height:15px;border-radius:4px;background:#e6e9ee;display:grid;place-items:center;font-size:9px;color:#fff;font-weight:700}
-  .dots i.on{background:var(--crm)}
-  .dots i.mid{background:#fbbf24}
-  .dots i.low{background:#f87171}
+  .dots i.on{background:var(--crm)} .dots i.mid{background:#fbbf24} .dots i.low{background:#f87171}
   .na{font-size:12px;color:var(--faint);font-weight:600}
 
   .ibcard{border:1px solid var(--border);border-radius:9px;padding:13px}
   .ibcard .t{font-size:11px;letter-spacing:.3px;text-transform:uppercase;color:var(--muted);font-weight:700}
   .ibcard .s{font-size:14px;font-weight:700;margin-top:6px}
   .ibcard .x{font-size:11.5px;color:var(--faint);margin-top:3px}
-  .ibcard.no{background:#fafbfc;border-style:dashed}
-  .ibcard.no .s{color:var(--seg-util)}
+  .ibcard.no{background:#fafbfc;border-style:dashed} .ibcard.no .s{color:var(--seg-util)}
   .ib3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
   .ib4{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+
+  /* dashboard charts */
+  .hbar{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+  .hbar .hl{width:120px;font-size:12.5px;color:#41506a;font-weight:500}
+  .hbar .ht{flex:1;height:22px;background:#f1f3f6;border-radius:6px;overflow:hidden}
+  .hbar .hf{height:100%;border-radius:6px;display:flex;align-items:center;padding:0 9px;color:#fff;font-size:11px;font-weight:700}
+  .hbar .hv{width:52px;text-align:right;font-weight:700;font-size:12.5px}
+  .donut{width:140px;height:140px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+  .donut .hole{width:92px;height:92px;border-radius:50%;background:#fff;display:grid;place-items:center;text-align:center}
+  .donut .hole b{font-size:22px;display:block;line-height:1} .donut .hole span{font-size:10.5px;color:var(--muted)}
+  .legend{font-size:12.5px;color:#41506a}
+  .legend div{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+  .legend .sw{width:11px;height:11px;border-radius:3px}
+  .funnel{display:flex;flex-direction:column;gap:8px}
+  .fbar{display:flex;align-items:center;gap:12px}
+  .fbar .fl{width:110px;font-size:12.5px;color:#41506a;font-weight:500}
+  .fbar .ft{flex:1;height:26px;background:#f1f3f6;border-radius:6px;overflow:hidden}
+  .fbar .ff{height:100%;border-radius:6px;display:flex;align-items:center;padding:0 9px;color:#fff;font-size:11.5px;font-weight:700}
+  .fbar .fn{width:32px;text-align:right;font-weight:700}
+  .flag{display:flex;align-items:center;gap:9px;padding:10px 13px;border-radius:9px;background:#fffbeb;border:1px solid #fde68a;font-size:12.5px;color:#92400e;margin-bottom:9px}
+  .flag.bad{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .flag .fi{font-size:15px}
+  .mini{font-size:12px;color:var(--muted)}
+
+  /* rules */
+  .rule{border:1px solid var(--border);border-radius:9px;padding:13px 15px;margin-bottom:11px;display:flex;align-items:center;gap:14px}
+  .rule .cond{flex:1;font-size:13px}
+  .rule .cond code{background:#f1f3f6;border-radius:5px;padding:2px 7px;font-family:ui-monospace,monospace;font-size:12px;color:#0a6e64;font-weight:600}
+  .rule .arrow{color:var(--faint);font-weight:700}
+  .rule .then{font-size:13px;font-weight:600;color:var(--crm)}
+  .toggle{width:38px;height:22px;border-radius:20px;background:var(--crm);position:relative;flex-shrink:0}
+  .toggle::after{content:"";position:absolute;top:2px;right:2px;width:18px;height:18px;border-radius:50%;background:#fff}
+  .toggle.off{background:#cbd2dc} .toggle.off::after{left:2px;right:auto}
 
   .hide{display:none}
   .back{font-size:13px;color:var(--crm);font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:10px}
@@ -127,7 +166,7 @@
 </style>
 </head>
 <body>
-<div class="wire-note"><b>WIREFRAME</b> · EMR Suite — CRM (SalesIQ) · web portal · screens reflect the field-collection sheets · sample data is illustrative</div>
+<div class="wire-note"><b>WIREFRAME</b> · EMR Suite — CRM (SalesIQ) · web portal · dashboard stats derive from the field-collection sheets · sample data is illustrative</div>
 
 <!-- SUITE SHELL -->
 <div class="suitebar">
@@ -146,86 +185,214 @@
 <div class="app">
   <!-- SIDE NAV -->
   <aside class="side">
-    <div class="grp">Field data</div>
-    <div class="nav active" onclick="go('visits',this)"><span class="i">📍</span>Visits<span class="badge">9</span></div>
+    <div class="grp">Main</div>
+    <div class="nav active" onclick="go('dashboard',this)"><span class="i">▦</span>Dashboard</div>
+    <div class="nav" onclick="go('visits',this)"><span class="i">📍</span>Visits<span class="badge">9</span></div>
     <div class="nav" onclick="go('customers',this)"><span class="i">🏢</span>Customers<span class="badge">12</span></div>
-    <div class="grp">Utility</div>
+    <div class="grp">Pipeline</div>
     <div class="nav" onclick="go('tenders',this)"><span class="i">⚖</span>Tenders<span class="badge">4</span></div>
+    <div class="nav" onclick="go('rules',this)"><span class="i">✦</span>Recommendations</div>
     <div style="margin-top:18px;padding:11px;background:#f6f8fa;border-radius:9px;font-size:11px;color:var(--muted);line-height:1.5">
-      <b style="color:#41506a">Built from the data sheets</b><br>Every field below is captured by the field team in the mobile app and surfaced here for sales heads &amp; management.
+      <b style="color:#41506a">Built from the data sheets</b><br>Every stat rolls up fields the field team captures in the mobile app.
     </div>
   </aside>
 
   <!-- MAIN -->
   <main class="main">
 
-    <!-- ===== VISITS (landing) ===== -->
-    <section id="v-visits">
+    <!-- ===== DASHBOARD ===== -->
+    <section id="v-dashboard">
+      <div class="pagehead">
+        <div>
+          <div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Dashboard</div>
+          <h1 class="h1">Sales head dashboard</h1>
+          <div class="sub">Statistics rolled up from End User, OEM and Utility visit data</div>
+        </div>
+        <div style="display:flex;gap:9px"><button class="btn">This quarter ▾</button><button class="btn">All regions ▾</button></div>
+      </div>
+
+      <!-- KPI ROW -->
+      <div class="cards k5">
+        <div class="card"><div class="lbl"><span class="tick" style="background:var(--warn)"></span>Open opportunities</div><div class="val">14</div><div class="delta">across all segments</div></div>
+        <div class="card"><div class="lbl"><span class="tick" style="background:var(--ok)"></span>Closed Won</div><div class="val">8</div><div class="delta up">▲ 3 this quarter</div></div>
+        <div class="card"><div class="lbl"><span class="tick" style="background:var(--bad)"></span>Closed Lost</div><div class="val">4</div><div class="delta">reasons logged</div></div>
+        <div class="card"><div class="lbl"><span class="tick" style="background:var(--crm)"></span>Win rate</div><div class="val">67%</div><div class="delta">won / (won+lost)</div></div>
+        <div class="card"><div class="lbl"><span class="tick" style="background:var(--seg-util)"></span>Tender value tracked</div><div class="val">₹293 Cr</div><div class="delta">11 live tenders</div></div>
+      </div>
+
+      <!-- STATUS + SEGMENT MIX -->
+      <div class="grid2">
+        <div class="panel">
+          <div class="ph"><h3>Status by stage</h3><span class="meta">from the visit list dropdown</span></div>
+          <div class="pb">
+            <div class="funnel">
+              <div class="fbar"><div class="fl">Opportunity</div><div class="ft"><div class="ff" style="width:100%;background:var(--warn)">14</div></div><div class="fn">14</div></div>
+              <div class="fbar"><div class="fl">Closed Won</div><div class="ft"><div class="ff" style="width:57%;background:var(--ok)">8</div></div><div class="fn">8</div></div>
+              <div class="fbar"><div class="fl">Closed Lost</div><div class="ft"><div class="ff" style="width:28%;background:var(--bad)">4</div></div><div class="fn">4</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="ph"><h3>Activity by segment</h3><span class="meta">visits logged this quarter</span></div>
+          <div class="pb">
+            <div class="hbar"><div class="hl" style="color:var(--seg-end)">End User</div><div class="ht"><div class="hf" style="width:56%;background:var(--seg-end)">5</div></div><div class="hv">56%</div></div>
+            <div class="hbar"><div class="hl" style="color:var(--seg-oem)">OEM</div><div class="ht"><div class="hf" style="width:22%;background:var(--seg-oem)">2</div></div><div class="hv">22%</div></div>
+            <div class="hbar"><div class="hl" style="color:var(--seg-util)">Utility</div><div class="ht"><div class="hf" style="width:22%;background:var(--seg-util)">2</div></div><div class="hv">22%</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- END USER: INSTALLED BASE PENETRATION + OPPORTUNITY FLAGS -->
+      <div class="panel">
+        <div class="ph"><h3>End User — installed-base penetration</h3><span class="meta">share of End User sites with each EMR product (from Yes/No fields)</span></div>
+        <div class="pb">
+          <div class="grid2 uneven">
+            <div>
+              <div class="hbar"><div class="hl">NIFPS</div><div class="ht"><div class="hf" style="width:80%;background:var(--crm)">4 / 5</div></div><div class="hv">80%</div></div>
+              <div class="hbar"><div class="hl">Smart Breather</div><div class="ht"><div class="hf" style="width:40%;background:var(--crm)">2 / 5</div></div><div class="hv">40%</div></div>
+              <div class="hbar"><div class="hl">OFU</div><div class="ht"><div class="hf" style="width:20%;background:var(--crm)">1 / 5</div></div><div class="hv">20%</div></div>
+              <div class="footnote">Low bars = cross-sell white-space. Smart Breather and OFU are the biggest gaps in the installed base.</div>
+            </div>
+            <div>
+              <div class="flag"><span class="fi">⚙️</span><div><b>3 sites</b> have Tap Changer Monitoring scope = Yes but no system installed</div></div>
+              <div class="flag"><span class="fi">🔧</span><div><b>2 sites</b> with last service &gt; 6 months — AMC renewal candidates</div></div>
+              <div class="flag bad"><span class="fi">📦</span><div><b>2 sites</b> with last spare &gt; 6 months — re-order due</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- END USER SURVEY RESULTS -->
+      <div class="panel">
+        <div class="ph"><h3>End User — survey results</h3><span class="meta">average of 1–5 customer response across sites</span></div>
+        <div class="pb">
+          <div class="grid2 uneven">
+            <div>
+              <div class="hbar"><div class="hl">Brand image</div><div class="ht"><div class="hf" style="width:76%;background:var(--crm)">3.8</div></div><div class="hv">3.8</div></div>
+              <div class="hbar"><div class="hl">Service response</div><div class="ht"><div class="hf" style="width:64%;background:var(--crm)">3.2</div></div><div class="hv">3.2</div></div>
+              <div class="hbar"><div class="hl">Engineer capability</div><div class="ht"><div class="hf" style="width:90%;background:var(--crm)">4.5</div></div><div class="hv">4.5</div></div>
+              <div class="hbar"><div class="hl">Spare response</div><div class="ht"><div class="hf" style="width:36%;background:var(--bad)">1.8</div></div><div class="hv">1.8</div></div>
+              <div class="hbar"><div class="hl">NIFPS/Breather team</div><div class="ht"><div class="hf" style="width:60%;background:var(--crm)">3.0</div></div><div class="hv">3.0</div></div>
+            </div>
+            <div>
+              <div class="flag bad"><span class="fi">⚠️</span><div><b>Spare response (1.8)</b> is the weakest dimension across all sites — fix before pitching new products</div></div>
+              <div class="ibcard" style="margin-top:4px"><div class="t">Overall satisfaction</div><div class="s">3.3 / 5</div><div class="x">average of all five dimensions</div></div>
+              <div class="ibcard" style="margin-top:10px"><div class="t">Accounts needing recovery</div><div class="s" style="color:var(--bad)">2 sites</div><div class="x">any dimension scored ≤ 2</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OEM PIPELINE -->
+      <div class="panel">
+        <div class="ph"><h3>OEM — build pipeline</h3><span class="meta">upcoming transformer builds where EMR is being specced in</span></div>
+        <div class="pb">
+          <div class="grid2">
+            <div style="display:flex;gap:20px;align-items:center">
+              <div class="donut" style="background:conic-gradient(var(--seg-oem) 0 72%, #d8b4fe 72% 100%)"><div class="hole"><div><b>18</b><span>units in play</span></div></div></div>
+              <div class="legend">
+                <div><span class="sw" style="background:var(--seg-oem)"></span>Domestic — 13 units</div>
+                <div><span class="sw" style="background:#d8b4fe"></span>Export — 5 units</div>
+                <div class="mini" style="margin-top:8px">Across 2 OEMs · ratings 220–500 MVA</div>
+              </div>
+            </div>
+            <div>
+              <div class="hbar"><div class="hl">This quarter</div><div class="ht"><div class="hf" style="width:55%;background:var(--seg-oem)">6</div></div><div class="hv">6</div></div>
+              <div class="hbar"><div class="hl">Next quarter</div><div class="ht"><div class="hf" style="width:73%;background:var(--seg-oem)">8</div></div><div class="hv">8</div></div>
+              <div class="hbar"><div class="hl">Q1 FY27</div><div class="ht"><div class="hf" style="width:36%;background:var(--seg-oem)">4</div></div><div class="hv">4</div></div>
+              <div class="footnote">Grouped by likely execution timeline — tells the team when to push each spec-in.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TENDERS VALUE + UPCOMING RESULTS + OPEN ACTIONS -->
+      <div class="grid2">
+        <div class="panel">
+          <div class="ph"><h3>Tenders — value by requirement</h3><span class="meta">where EMR demand is pulled through</span></div>
+          <div class="pb">
+            <div class="hbar"><div class="hl">OLTC</div><div class="ht"><div class="hf" style="width:85%;background:var(--seg-util)">₹187 Cr</div></div><div class="hv"></div></div>
+            <div class="hbar"><div class="hl">Smart Breather</div><div class="ht"><div class="hf" style="width:62%;background:var(--seg-util)">₹148 Cr</div></div><div class="hv"></div></div>
+            <div class="hbar"><div class="hl">N2 (NIFPS)</div><div class="ht"><div class="hf" style="width:38%;background:var(--seg-util)">₹83 Cr</div></div><div class="hv"></div></div>
+            <div class="footnote">A tender may carry more than one requirement, so values overlap. Total tracked tender value: <b>₹293 Cr</b>.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="ph"><h3>Upcoming tender results</h3><span class="meta">next result dates</span></div>
+          <table>
+            <tbody>
+              <tr class="row" onclick="open_('util')"><td><b>Rural feeder upgrade</b><br><span class="mini">TANGEDCO · SB</span></td><td style="text-align:right"><span class="seg util"><span class="d"></span>28 Jun</span><br><span class="mini">₹62 Cr</span></td></tr>
+              <tr class="row" onclick="open_('util')"><td><b>765 kV substation pkg</b><br><span class="mini">TN Transmission · OLTC, N2</span></td><td style="text-align:right"><span class="seg util"><span class="d"></span>12 Jul</span><br><span class="mini">₹39 Cr</span></td></tr>
+              <tr class="row" onclick="open_('util')"><td><b>Grid strengthening</b><br><span class="mini">Powergrid SR · OLTC, SB</span></td><td style="text-align:right"><span class="seg util"><span class="d"></span>02 Aug</span><br><span class="mini">₹148 Cr</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- OPEN EMR ACTIONS -->
+      <div class="panel">
+        <div class="ph"><h3>Open actions from EMR side</h3><span class="meta">pending follow-ups captured in visits — accountability for the team</span></div>
+        <table>
+          <thead><tr><th>Customer</th><th>Segment</th><th>Action to be taken from EMR side</th><th>Owner</th><th>Since</th></tr></thead>
+          <tbody>
+            <tr class="row" onclick="open_('util')"><td>TN Transmission Corp</td><td><span class="seg util"><span class="d"></span>Utility</span></td><td>Submit OLTC spec note before bid close</td><td><div class="who"><div class="a">RS</div></div></td><td>26 Jun</td></tr>
+            <tr class="row" onclick="open_('oem')"><td>Voltamp Transformers</td><td><span class="seg oem"><span class="d"></span>OEM</span></td><td>Share Smart Breather sample + datasheet</td><td><div class="who"><div class="a">AK</div></div></td><td>26 Jun</td></tr>
+            <tr class="row" onclick="open_('end')"><td>JSW Steel — Salem</td><td><span class="seg end"><span class="d"></span>End User</span></td><td>Quote breather upgrade</td><td><div class="who"><div class="a">AK</div></div></td><td>25 Jun</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="footnote">Every widget above is computed from sheet fields: status dropdown, Yes/No installed-base, month/year service &amp; spare dates, 1–5 survey ratings, OEM rating/qty/timeline, and the Utility tender section.</div>
+    </section>
+
+    <!-- ===== VISITS ===== -->
+    <section id="v-visits" class="hide">
       <div class="pagehead">
         <div>
           <div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Visits</div>
           <h1 class="h1">Visits</h1>
-          <div class="sub">Field visits captured from the mobile app · the record opens in the segment it was logged under</div>
+          <div class="sub">Field visits captured from the mobile app · set each one's status as it progresses</div>
         </div>
         <button class="btn">Export</button>
       </div>
-
-      <div class="cards">
-        <div class="card"><div class="lbl"><span class="tick" style="background:var(--seg-end)"></span>End User visits</div><div class="val">5</div><div class="delta">transformer owners</div></div>
-        <div class="card"><div class="lbl"><span class="tick" style="background:var(--seg-oem)"></span>OEM visits</div><div class="val">2</div><div class="delta">transformer manufacturers</div></div>
-        <div class="card"><div class="lbl"><span class="tick" style="background:var(--seg-util)"></span>Utility visits</div><div class="val">2</div><div class="delta">tender-floating utilities</div></div>
-      </div>
-
       <div class="filters">
         <span class="chipf on">All</span><span class="chipf">End User</span><span class="chipf">OEM</span><span class="chipf">Utility</span>
+        <span style="flex:1"></span>
+        <span class="chipf">Opportunity</span><span class="chipf">Closed Won</span><span class="chipf">Closed Lost</span>
       </div>
-
       <div class="panel">
         <table>
-          <thead><tr><th>Date</th><th>Customer</th><th>Segment</th><th>Purpose of meeting</th><th>Met with</th><th>Action from EMR side</th><th>Outcome</th></tr></thead>
+          <thead><tr><th>Date</th><th>Customer</th><th>Segment</th><th>Purpose</th><th>Action from EMR</th><th>Status</th></tr></thead>
           <tbody>
-            <tr class="row" onclick="open_('end')"><td>26 Jun</td><td>Chettinad Cement — Karur</td><td><span class="seg end"><span class="d"></span>End User</span></td><td>Site inspection</td><td>Plant electrical i/c</td><td>Tap monitoring demo</td><td>Inspection done</td></tr>
-            <tr class="row" onclick="open_('oem')"><td>26 Jun</td><td>Voltamp Transformers</td><td><span class="seg oem"><span class="d"></span>OEM</span></td><td>Design discussion</td><td>Head — R&amp;D</td><td>Share sample + datasheet</td><td>Sample requested</td></tr>
-            <tr class="row" onclick="open_('util')"><td>26 Jun</td><td>TN Transmission Corp</td><td><span class="seg util"><span class="d"></span>Utility</span></td><td>Tender spec review</td><td>GM — Design</td><td>Submit OLTC spec note</td><td>Spec note pending</td></tr>
-            <tr class="row" onclick="open_('end')"><td>25 Jun</td><td>JSW Steel — Salem</td><td><span class="seg end"><span class="d"></span>End User</span></td><td>AMC renewal</td><td>Maintenance mgr</td><td>Quote breather upgrade</td><td>Quote to follow</td></tr>
-            <tr class="row" onclick="open_('end')"><td>24 Jun</td><td>Hindustan Zinc — Debari</td><td><span class="seg end"><span class="d"></span>End User</span></td><td>Routine visit</td><td>Electrical head</td><td>Inspect NIFPS</td><td>Healthy</td></tr>
-            <tr class="row" onclick="open_('oem')"><td>23 Jun</td><td>BHEL — Trichy</td><td><span class="seg oem"><span class="d"></span>OEM</span></td><td>Spec-in for export builds</td><td>Project lead</td><td>OFU drawing review</td><td>Under review</td></tr>
-            <tr class="row" onclick="open_('util')"><td>22 Jun</td><td>TANGEDCO</td><td><span class="seg util"><span class="d"></span>Utility</span></td><td>Feeder upgrade tender</td><td>SE — Projects</td><td>Share SB credentials</td><td>Shared</td></tr>
+            <tr class="row"><td>26 Jun</td><td onclick="open_('end')">Chettinad Cement — Karur</td><td><span class="seg end"><span class="d"></span>End User</span></td><td>Site inspection</td><td>Tap monitoring demo</td><td><select class="status opp" onchange="setStatus(this)"><option value="opp" selected>Opportunity</option><option value="won">Closed Won</option><option value="lost">Closed Lost</option></select></td></tr>
+            <tr class="row"><td>26 Jun</td><td onclick="open_('oem')">Voltamp Transformers</td><td><span class="seg oem"><span class="d"></span>OEM</span></td><td>Design discussion</td><td>Share sample</td><td><select class="status opp" onchange="setStatus(this)"><option value="opp" selected>Opportunity</option><option value="won">Closed Won</option><option value="lost">Closed Lost</option></select></td></tr>
+            <tr class="row"><td>26 Jun</td><td onclick="open_('util')">TN Transmission Corp</td><td><span class="seg util"><span class="d"></span>Utility</span></td><td>Tender spec review</td><td>Submit OLTC note</td><td><select class="status opp" onchange="setStatus(this)"><option value="opp" selected>Opportunity</option><option value="won">Closed Won</option><option value="lost">Closed Lost</option></select></td></tr>
+            <tr class="row"><td>25 Jun</td><td onclick="open_('end')">JSW Steel — Salem</td><td><span class="seg end"><span class="d"></span>End User</span></td><td>AMC renewal</td><td>Quote breather upgrade</td><td><select class="status won" onchange="setStatus(this)"><option value="opp">Opportunity</option><option value="won" selected>Closed Won</option><option value="lost">Closed Lost</option></select></td></tr>
+            <tr class="row"><td>24 Jun</td><td onclick="open_('end')">Hindustan Zinc — Debari</td><td><span class="seg end"><span class="d"></span>End User</span></td><td>Routine visit</td><td>Inspect NIFPS</td><td><select class="status won" onchange="setStatus(this)"><option value="opp">Opportunity</option><option value="won" selected>Closed Won</option><option value="lost">Closed Lost</option></select></td></tr>
+            <tr class="row"><td>23 Jun</td><td onclick="open_('oem')">BHEL — Trichy</td><td><span class="seg oem"><span class="d"></span>OEM</span></td><td>Spec-in export builds</td><td>OFU drawing review</td><td><select class="status opp" onchange="setStatus(this)"><option value="opp" selected>Opportunity</option><option value="won">Closed Won</option><option value="lost">Closed Lost</option></select></td></tr>
+            <tr class="row"><td>22 Jun</td><td onclick="open_('util')">TANGEDCO</td><td><span class="seg util"><span class="d"></span>Utility</span></td><td>Feeder upgrade tender</td><td>Share SB credentials</td><td><select class="status lost" onchange="setStatus(this)"><option value="opp">Opportunity</option><option value="won">Closed Won</option><option value="lost" selected>Closed Lost</option></select></td></tr>
           </tbody>
         </table>
       </div>
-      <div class="footnote">Columns map to the common meeting fields on every sheet: purpose, contacts met, topic discussed, action from EMR side, outcome of the visit.</div>
+      <div class="footnote">Click a customer name to open the full visit record. The status dropdown feeds the win-rate and status stats on the dashboard.</div>
     </section>
 
     <!-- ===== END USER VISIT DETAIL ===== -->
     <section id="v-end" class="hide">
-      <div class="back" onclick="go('visits',document.querySelector('.nav'))">‹ Back to visits</div>
-      <div class="pagehead">
-        <div>
-          <div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Visit</div>
-          <h1 class="h1">Chettinad Cement — Karur</h1>
-          <div class="sub"><span class="seg end"><span class="d"></span>End User</span> &nbsp; Visit on 26 Jun 2026 · logged by R. Senthil</div>
-        </div>
-        <button class="btn">Edit</button>
-      </div>
-
+      <div class="back" onclick="go('visits',document.querySelectorAll('.nav')[1])">‹ Back to visits</div>
+      <div class="pagehead"><div><div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Visit</div><h1 class="h1">Chettinad Cement — Karur</h1><div class="sub"><span class="seg end"><span class="d"></span>End User</span> &nbsp; Visit on 26 Jun 2026 · logged by R. Senthil</div></div><button class="btn">Edit</button></div>
       <div class="panel">
         <div class="sectionhdr">Details collected from the End User</div>
         <div class="rec">
           <div class="f full"><div class="k">List of transformers &amp; OLTCs at premises</div><div class="v"><span class="attach">📎 transformers_karur.pdf</span></div></div>
           <div class="f"><div class="k">Last service done</div><div class="v">March 2026</div></div>
           <div class="f"><div class="k">Last spare purchased on</div><div class="v">November 2025</div></div>
-
           <div class="f"><div class="k">NIFPS installed at site</div><div class="v"><span class="yn y">Yes</span> &nbsp; <span class="chip">SN NIF-22-4471</span></div></div>
           <div class="f"><div class="k">Smart Breather installed at site</div><div class="v"><span class="yn y">Yes</span> &nbsp; <span class="chip">SN SB-21-8830</span></div></div>
           <div class="f"><div class="k">OFU installed at site</div><div class="v"><span class="yn n">No</span></div></div>
           <div class="f"><div class="k">Tap frequency — tap changes per day</div><div class="v">11</div></div>
-
-          <div class="f"><div class="k">Tap frequency (continued)</div><div class="v muted">free-text field</div></div>
           <div class="f"><div class="k">Scope for Tap Changer Monitoring system</div><div class="v"><span class="yn y">Yes</span></div></div>
         </div>
       </div>
-
       <div class="panel">
         <div class="sectionhdr">Customer response (rated 1–5)</div>
         <table class="ratetab">
@@ -236,21 +403,12 @@
           <tr><td class="rl">NIFPS / Breather team response</td><td><div class="dots"><i class="on">1</i><i class="on">2</i><i class="on">3</i><i>4</i><i>5</i></div></td></tr>
         </table>
       </div>
-      <div class="footnote">All fields above are exactly the 17 rows on the End User sheet — attachment, month/year dates, Yes/No + serial numbers, tap-frequency text box, monitoring Yes/No, and the five 1–5 ratings (engineer capability allows NA).</div>
     </section>
 
     <!-- ===== OEM VISIT DETAIL ===== -->
     <section id="v-oem" class="hide">
-      <div class="back" onclick="go('visits',document.querySelector('.nav'))">‹ Back to visits</div>
-      <div class="pagehead">
-        <div>
-          <div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Visit</div>
-          <h1 class="h1">Voltamp Transformers</h1>
-          <div class="sub"><span class="seg oem"><span class="d"></span>OEM</span> &nbsp; Visit on 26 Jun 2026 · logged by A. Kumar</div>
-        </div>
-        <button class="btn">Edit</button>
-      </div>
-
+      <div class="back" onclick="go('visits',document.querySelectorAll('.nav')[1])">‹ Back to visits</div>
+      <div class="pagehead"><div><div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Visit</div><h1 class="h1">Voltamp Transformers</h1><div class="sub"><span class="seg oem"><span class="d"></span>OEM</span> &nbsp; Visit on 26 Jun 2026 · logged by A. Kumar</div></div><button class="btn">Edit</button></div>
       <div class="panel">
         <div class="sectionhdr">Meeting record</div>
         <div class="rec">
@@ -264,7 +422,6 @@
           <div class="f full"><div class="k">Outcome of the meeting / visit</div><div class="v">Positive — sample requested for evaluation</div></div>
         </div>
       </div>
-
       <div class="panel">
         <div class="sectionhdr">Information collected each visit</div>
         <div class="rec">
@@ -275,21 +432,12 @@
           <div class="f full"><div class="k">Likely execution timeline</div><div class="v">Q3 FY26</div></div>
         </div>
       </div>
-      <div class="footnote">Fields map to the OEM sheet — the meeting block plus rating, quantity, end-user, domestic/export and likely execution timeline.</div>
     </section>
 
     <!-- ===== UTILITY VISIT DETAIL ===== -->
     <section id="v-util" class="hide">
-      <div class="back" onclick="go('visits',document.querySelector('.nav'))">‹ Back to visits</div>
-      <div class="pagehead">
-        <div>
-          <div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Visit</div>
-          <h1 class="h1">TN Transmission Corp</h1>
-          <div class="sub"><span class="seg util"><span class="d"></span>Utility</span> &nbsp; Visit on 26 Jun 2026 · logged by R. Senthil</div>
-        </div>
-        <button class="btn">Edit</button>
-      </div>
-
+      <div class="back" onclick="go('visits',document.querySelectorAll('.nav')[1])">‹ Back to visits</div>
+      <div class="pagehead"><div><div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Visit</div><h1 class="h1">TN Transmission Corp</h1><div class="sub"><span class="seg util"><span class="d"></span>Utility</span> &nbsp; Visit on 26 Jun 2026 · logged by R. Senthil</div></div><button class="btn">Edit</button></div>
       <div class="panel">
         <div class="sectionhdr">Meeting record</div>
         <div class="rec">
@@ -303,7 +451,6 @@
           <div class="f full"><div class="k">Outcome of the meeting / visit</div><div class="v">EMR to circulate spec note before bid close</div></div>
         </div>
       </div>
-
       <div class="panel">
         <div class="sectionhdr">Information collected each visit — tender details</div>
         <div class="rec">
@@ -319,21 +466,12 @@
           <div class="f full"><div class="k">Directors &amp; MD — with complete verticals' contacts</div><div class="v"><span class="chip">MD — Mr. K. Subramanian</span><span class="chip">Director (Tech)</span><span class="chip">Director (Finance)</span></div></div>
         </div>
       </div>
-      <div class="footnote">Fields map to the Utilities sheet — the meeting block plus the full tender section, L1/L2/L3, MVA/KVA/qty, result date, value, OLTC/N2/SB requirement, delivery schedule and the wing-wise + MD/Director contact map.</div>
     </section>
 
     <!-- ===== CUSTOMERS ===== -->
     <section id="v-customers" class="hide">
-      <div class="pagehead">
-        <div>
-          <div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Customers</div>
-          <h1 class="h1">Customers</h1>
-          <div class="sub">Companies and sites visited, grouped by segment</div>
-        </div>
-      </div>
-      <div class="filters">
-        <span class="chipf on">All</span><span class="chipf">End User</span><span class="chipf">OEM</span><span class="chipf">Utility</span>
-      </div>
+      <div class="pagehead"><div><div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Customers</div><h1 class="h1">Customers</h1><div class="sub">Companies and sites visited, grouped by segment</div></div></div>
+      <div class="filters"><span class="chipf on">All</span><span class="chipf">End User</span><span class="chipf">OEM</span><span class="chipf">Utility</span></div>
       <div class="panel">
         <table>
           <thead><tr><th>Customer</th><th>Segment</th><th>Location</th><th>EMR products on site</th><th>Last visit</th></tr></thead>
@@ -352,16 +490,8 @@
 
     <!-- ===== END USER CUSTOMER RECORD ===== -->
     <section id="v-custend" class="hide">
-      <div class="back" onclick="go('customers',document.querySelectorAll('.nav')[1])">‹ Back to customers</div>
-      <div class="pagehead">
-        <div>
-          <div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Customer</div>
-          <h1 class="h1">Chettinad Cement — Karur</h1>
-          <div class="sub"><span class="seg end"><span class="d"></span>End User</span> &nbsp; Karur, Tamil Nadu</div>
-        </div>
-        <button class="btn primary">＋ Log a visit</button>
-      </div>
-
+      <div class="back" onclick="go('customers',document.querySelectorAll('.nav')[2])">‹ Back to customers</div>
+      <div class="pagehead"><div><div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Customer</div><h1 class="h1">Chettinad Cement — Karur</h1><div class="sub"><span class="seg end"><span class="d"></span>End User</span> &nbsp; Karur, Tamil Nadu</div></div><button class="btn primary">＋ Log a visit</button></div>
       <div class="panel">
         <div class="ph"><h3>EMR products on site</h3><span class="meta">from the last End User visit</span></div>
         <div class="pb">
@@ -378,18 +508,14 @@
           </div>
         </div>
       </div>
-
       <div class="panel">
-        <div class="ph"><h3>Latest customer response</h3><span class="meta">rated 1–5</span></div>
-        <table class="ratetab">
-          <tr><td class="rl">Our brand image</td><td><div class="dots"><i class="on">1</i><i class="on">2</i><i class="on">3</i><i class="on">4</i><i>5</i></div></td></tr>
-          <tr><td class="rl">Service response</td><td><div class="dots"><i class="on">1</i><i class="on">2</i><i class="on">3</i><i class="mid">4</i><i>5</i></div></td></tr>
-          <tr><td class="rl">Service engineer technical capability</td><td><div class="dots"><i class="on">1</i><i class="on">2</i><i class="on">3</i><i class="on">4</i><i class="on">5</i></div></td></tr>
-          <tr><td class="rl">Spare response</td><td><div class="dots"><i class="low">1</i><i class="low">2</i><i>3</i><i>4</i><i>5</i></div></td></tr>
-          <tr><td class="rl">NIFPS / Breather team response</td><td><div class="dots"><i class="on">1</i><i class="on">2</i><i class="on">3</i><i>4</i><i>5</i></div></td></tr>
-        </table>
+        <div class="ph"><h3>Recommended next</h3><span class="meta">from the rules engine</span></div>
+        <div class="pb">
+          <div class="flag"><span class="fi">✦</span><div><b>Tap Changer Monitoring System</b> — tap freq 11/day + scope = Yes + none installed</div></div>
+          <div class="flag"><span class="fi">✦</span><div><b>OFU</b> — NIFPS + Breather present, OFU missing</div></div>
+          <div class="flag"><span class="fi">✦</span><div><b>AMC / spares</b> — last spare &gt; 6 months ago</div></div>
+        </div>
       </div>
-
       <div class="panel">
         <div class="ph"><h3>Visit history</h3><span class="meta">2 visits</span></div>
         <table>
@@ -400,18 +526,16 @@
           </tbody>
         </table>
       </div>
-      <div class="footnote">This record only rolls up fields the field team captures on the End User sheet — no inferred data.</div>
     </section>
 
     <!-- ===== TENDERS ===== -->
     <section id="v-tenders" class="hide">
-      <div class="pagehead">
-        <div>
-          <div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Tenders</div>
-          <h1 class="h1">Tenders</h1>
-          <div class="sub">A top-level view of tender details captured during Utility visits</div>
-        </div>
-        <button class="btn primary">＋ Add tender</button>
+      <div class="pagehead"><div><div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Tenders</div><h1 class="h1">Tenders</h1><div class="sub">A top-level view of tender details captured during Utility visits</div></div><button class="btn primary">＋ Add tender</button></div>
+      <div class="cards k4">
+        <div class="card"><div class="lbl">Live tenders</div><div class="val">4</div></div>
+        <div class="card"><div class="lbl">Total value tracked</div><div class="val">₹293 Cr</div></div>
+        <div class="card"><div class="lbl">Awaiting result</div><div class="val">3</div></div>
+        <div class="card"><div class="lbl">Awarded</div><div class="val">1</div></div>
       </div>
       <div class="panel">
         <table>
@@ -424,7 +548,20 @@
           </tbody>
         </table>
       </div>
-      <div class="footnote">Every column here comes from the Utilities sheet's tender section. Tenders sit at the top level (confirmed earlier) rather than nested under each utility.</div>
+      <div class="footnote">Columns come from the Utilities sheet's tender section. Tenders sit at the top level (confirmed earlier) rather than nested under each utility.</div>
+    </section>
+
+    <!-- ===== RECOMMENDATIONS / RULES ===== -->
+    <section id="v-rules" class="hide">
+      <div class="pagehead"><div><div class="crumb">EMR Suite · <b>CRM · SalesIQ</b> · Recommendations</div><h1 class="h1">Recommendation rules</h1><div class="sub">Simple configurable IF → THEN rules over captured End User data · no scoring in v1</div></div><button class="btn primary">＋ Add rule</button></div>
+      <div class="panel"><div class="pb">
+        <div class="rule"><div class="cond">IF <code>tap frequency &gt; 8/day</code> AND <code>monitoring scope = Yes</code> AND <code>no monitoring installed</code></div><div class="arrow">→</div><div class="then">Tap Changer Monitoring</div><div class="toggle"></div></div>
+        <div class="rule"><div class="cond">IF <code>NIFPS = Yes</code> AND <code>Smart Breather = No</code></div><div class="arrow">→</div><div class="then">Smart Breather</div><div class="toggle"></div></div>
+        <div class="rule"><div class="cond">IF <code>NIFPS = Yes</code> AND <code>Breather = Yes</code> AND <code>OFU = No</code></div><div class="arrow">→</div><div class="then">OFU</div><div class="toggle"></div></div>
+        <div class="rule"><div class="cond">IF <code>last service &gt; 6 months</code> OR <code>last spare &gt; 6 months</code></div><div class="arrow">→</div><div class="then">AMC / Spares</div><div class="toggle"></div></div>
+        <div class="rule" style="opacity:.65"><div class="cond">IF <code>any survey score ≤ 2</code></div><div class="arrow">→</div><div class="then" style="color:var(--seg-util)">Flag: recover before pitch</div><div class="toggle off"></div></div>
+      </div></div>
+      <div class="footnote">Rules read the End User installed-base and survey fields, and surface the result on the customer record and in the field app.</div>
     </section>
 
   </main>
@@ -442,6 +579,10 @@
     document.querySelectorAll('main > section').forEach(s=>s.classList.add('hide'));
     document.getElementById('v-'+id).classList.remove('hide');
     document.querySelector('.main').scrollTop=0;
+  }
+  function setStatus(sel){
+    sel.classList.remove('opp','won','lost');
+    sel.classList.add(sel.value);
   }
 </script>
 </body>
